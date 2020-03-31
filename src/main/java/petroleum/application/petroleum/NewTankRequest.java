@@ -32,15 +32,15 @@ public class NewTankRequest {
     @NotNull(message = "Payor can not be empty")
     private String payor;
 
-    public Double getVolume() {
+    Double getVolume() {
         return volume;
     }
 
-    public Double getUnitPrice() {
+    Double getUnitPrice() {
         return unitPrice;
     }
 
-    public String getPayor() {
+    String getPayor() {
         return payor;
     }
 
