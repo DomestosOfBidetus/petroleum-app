@@ -1,2 +1,2 @@
 # petroleum-application
-The goal of application is to enable split of gasoline cost between two car users
+Use your own postgreSQL db and hibernate-ddl
