@@ -1,7 +1,5 @@
 package petroleum.application.petroleum;
 
-import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,11 +12,15 @@ import java.util.Optional;
 @Service
 public class TankService implements AddNewTank, GetTankInfo{
 
-    @Autowired
-    private TankRepository tankRepository;
+    private final TankRepository tankRepository;
 
-    @Autowired
-    private DistanceRepository distanceRepository;
+    private final DistanceRepository distanceRepository;
+
+    public TankService(TankRepository tankRepository,
+            DistanceRepository distanceRepository) {
+        this.tankRepository = tankRepository;
+        this.distanceRepository = distanceRepository;
+    }
 
     @Override
     public String createNewTank(NewTankRequest newTankRequest) {
@@ -51,6 +53,7 @@ public class TankService implements AddNewTank, GetTankInfo{
         Double roundedOtherCost = new BigDecimal(Double.toString(otherCost)).setScale(2, RoundingMode.FLOOR).doubleValue();
         tank.setAmountDue(roundedOtherCost);
         tank.setClosingDate(LocalDateTime.now());
+
         return "Settlement for tank no. " + previousTankId + ": \n\tPayor: " + payor + ", \nAmount due: " + roundedOtherCost;
     }
 

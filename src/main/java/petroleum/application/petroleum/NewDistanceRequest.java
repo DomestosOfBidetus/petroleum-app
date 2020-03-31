@@ -16,11 +16,11 @@ public class NewDistanceRequest {
     @NotNull(message = "Driver can not be empty")
     private String driver;
 
-    public Double getDistance() {
+    Double getDistance() {
         return distance;
     }
 
-    public String getDriver() {
+    String getDriver() {
         return driver;
     }
 }
